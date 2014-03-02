@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour {
 	public static int levelCount = 10;
 	public static int currentLevel = 1;
 
+	public static int deathCount = 0;
+
 	void Start () {
 		cam = GetComponent<GameCamera>();
 
@@ -34,6 +36,8 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 		if (GameObject.FindGameObjectWithTag("Player").transform.position.y < -50) {
+			deathCount++;
+			print(deathCount);
 			Application.LoadLevel("Level " + currentLevel);
 		}
 	}
@@ -50,5 +54,9 @@ public class GameManager : MonoBehaviour {
 		else {
 			Application.LoadLevel ("MainMenu");
 		}
+	}
+
+	void OnGUI() {
+		GUI.Box (new Rect (Screen.width - 100,0,100,40), "Deaths: " + deathCount);
 	}
 }

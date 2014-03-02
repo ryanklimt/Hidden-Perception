@@ -3,8 +3,6 @@ using System.Collections;
 
 public class GUIMenu : MonoBehaviour {
 
-	public GameObject player;
-	
 	void start() {
 		OnGUI ();
 	}

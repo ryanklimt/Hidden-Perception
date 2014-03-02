@@ -45,7 +45,6 @@ public class PlayerController : Entity {
 
 		// Throwing Logic
 		while (Input.GetButton("Throw")) {
-			print("throw");
 		}
 		
 
