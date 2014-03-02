@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour {
 			GameObject.FindGameObjectWithTag("Player").transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
 		}
 		if(Input.GetButtonDown("Escape")) {
+			Camera.main.SendMessage("fadeOut");
 			Application.LoadLevel("MainMenu");
 		}
 
@@ -73,8 +74,10 @@ public class GameManager : MonoBehaviour {
 		}
 		if (currentLevel < levelCount) {
 			currentLevel++;
+			Camera.main.SendMessage("fadeOut");
 			Application.LoadLevel("Level " + currentLevel);
 		} else {
+			Camera.main.SendMessage("fadeOut");
 			Application.LoadLevel("FinishedGame");
 		}
 	}

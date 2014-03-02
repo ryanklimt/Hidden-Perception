@@ -27,6 +27,7 @@ public class GUIMenu : MonoBehaviour {
 		float yOffset = 0f;
 		while(i <= currentProgress && i <= maxLevels) {
 			if(GUI.Button(new Rect(10,25 + yOffset,80,20), "Level " + i)) {
+				Camera.main.SendMessage("fadeOut");
 				Application.LoadLevel("Level " + i);
 			}
 			i++;
