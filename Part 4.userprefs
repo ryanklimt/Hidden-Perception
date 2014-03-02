@@ -1,0 +1,19 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Entity.cs">
+    <Files>
+      <File FileName="../../../Crossover/Sebastian/Projects/Run!/Run!/Assets/_Scripts/Ninja/Ragdoll.cs" Line="94" Column="15" />
+      <File FileName="../../../../Part 4/Assets/Scripts/Ragdoll.cs" Line="13" Column="2" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="5" Column="39" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="15" Column="30" />
+      <File FileName="Assets/Scripts/GameCamera.cs" Line="12" Column="14" />
+      <File FileName="Assets/Scripts/PlayerPhysics.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Sawblade.cs" Line="15" Column="44" />
+      <File FileName="Assets/Scripts/Entity.cs" Line="20" Column="28" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
