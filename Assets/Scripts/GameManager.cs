@@ -37,17 +37,28 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void Update() {
-		if (!currentPlayer) {
-			if (Input.GetButtonDown("Respawn")) {
-				SpawnPlayer(checkpoint);
-			}
-		}
-		if (GameObject.FindGameObjectWithTag("Player").transform.position.y < -50) {
+		if (Input.GetButtonDown("Respawn") || GameObject.FindGameObjectWithTag("Player").transform.position.y < -50) {
 			deathCount++;
-			Application.LoadLevel("Level " + currentLevel);
+			GameObject.FindGameObjectWithTag("Player").transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
 		}
 		if(Input.GetButtonDown("Escape")) {
 			Application.LoadLevel("MainMenu");
+		}
+
+		// Zoom in camera ScrollWheel
+		Camera.main.orthographicSize -= Input.GetAxis("Mouse ScrollWheel");
+		if (Camera.main.orthographicSize <= 3) {
+			Camera.main.orthographicSize = 3;
+		}
+		if (Camera.main.orthographicSize >= 25) {
+			Camera.main.orthographicSize = 25;
+		}
+		if (Input.GetMouseButtonDown (2)) {
+			if(Camera.main.orthographicSize >= 20) {
+				Camera.main.orthographicSize = 6;
+			} else {
+				Camera.main.orthographicSize = 25;
+			}
 		}
 	}
 
@@ -58,14 +69,13 @@ public class GameManager : MonoBehaviour {
 	public void EndLevel() {
 		if (currentLevel >= currentProgress) {
 			currentProgress = currentLevel + 1;
+			OnSave(currentProgress);
 		}
-		OnSave(currentProgress);
 		if (currentLevel < levelCount) {
 			currentLevel++;
 			Application.LoadLevel("Level " + currentLevel);
-		}
-		else {
-			Application.LoadLevel("MainMenu");
+		} else {
+			Application.LoadLevel("FinishedGame");
 		}
 	}
 

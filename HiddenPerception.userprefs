@@ -1,13 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUIMenu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FlickeringLight.js">
     <Files>
-      <File FileName="Assets\Scripts\GameManager.cs" Line="54" Column="41" />
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="53" Column="44" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="78" Column="21" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="63" Column="4" />
       <File FileName="Assets\Scripts\Entity.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PlayerPhysics.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\FlickeringLight.js" Line="14" Column="2" />
-      <File FileName="Assets\Scripts\GUIMenu.cs" Line="12" Column="12" />
+      <File FileName="Assets\Scripts\FlickeringLight.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUIMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\gameMusic.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\rollCredits.js" Line="20" Column="46" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
