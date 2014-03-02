@@ -1,4 +1,6 @@
-﻿var FlashingLight: Light;
+﻿import System.IO;
+
+var FlashingLight: Light;
 FlashingLight.enabled = true;
 
 function FixedUpdate() {
@@ -9,5 +11,4 @@ function FixedUpdate() {
 	} else {
 		FlashingLight.enabled = false;
 	}
-
 }

@@ -51,8 +51,8 @@ public class PlayerController : Entity {
 			if(!throwing) {
 				throwing = true;
 				Vector3 mousePos = Input.mousePosition;
-				mousePos.z =- (transform.position.z - Camera.mainCamera.transform.position.z - 20);
-				Vector3 worldPos = Camera.mainCamera.ScreenToWorldPoint(mousePos);
+				mousePos.z =- (transform.position.z - Camera.main.transform.position.z - 20);
+				Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
 				var targetDelta = (worldPos - transform.position);
 				GameObject projectile = Instantiate(throwObj, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation) as GameObject;
 				projectile.rigidbody.AddForce(targetDelta * 100);

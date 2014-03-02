@@ -1,54 +1,37 @@
 using UnityEngine;
+using System.IO;
+using System;
 using System.Collections;
 
 public class GUIMenu : MonoBehaviour {
 
-	void start() {
-		OnGUI ();
+	private int currentProgress;
+	private int maxLevels = 10;
+
+	void Start() {
+		OnLoad();
+		currentProgress = 100;
+	}
+
+	void OnLoad() {
+		var sr = new StreamReader(Application.dataPath + "/" + "LevelSave.txt");
+		var fileContents = sr.ReadToEnd();
+		sr.Close();
+		currentProgress = int.Parse(fileContents.Split("\n"[0])[0]);
 	}
 
 
 	void OnGUI() {
-		GUI.Box(new Rect(5,5,90,320), "Main Menu");
+		GUI.Box(new Rect(5,5,90,Math.Min(currentProgress, maxLevels) * 30 + 20), "Main Menu");
 
-		if(GUI.Button(new Rect(10,25,80,20), "Level " + 1)) {
-			Application.LoadLevel("Level " + 1);
-		}
-
-		if(GUI.Button(new Rect(10,55,80,20), "Level " + 2)) {
-			Application.LoadLevel("Level " + 2);
-		}
-
-		if(GUI.Button(new Rect(10,85,80,20), "Level " + 3)) {
-			Application.LoadLevel("Level " + 3);
-		}
-
-		if(GUI.Button(new Rect(10,115,80,20), "Level " + 4)) {
-			Application.LoadLevel("Level " + 4);
-		}
-
-		if(GUI.Button(new Rect(10,145,80,20), "Level " + 5)) {
-			Application.LoadLevel("Level " + 5);
-		}
-
-		if(GUI.Button(new Rect(10,175,80,20), "Level " + 6)) {
-			Application.LoadLevel("Level " + 6);
-		}
-
-		if(GUI.Button(new Rect(10,205,80,20), "Level " + 7)) {
-			Application.LoadLevel("Level " + 7);
-		}
-
-		if(GUI.Button(new Rect(10,235,80,20), "Level " + 8)) {
-			Application.LoadLevel("Level " + 8);
-		}
-
-		if(GUI.Button(new Rect(10,265,80,20), "Level " + 9)) {
-			Application.LoadLevel("Level " + 9);
-		}
-
-		if(GUI.Button(new Rect(10,295,80,20), "Level " + 10)) {
-			Application.LoadLevel("Level " + 10);
+		int i = 1;
+		float yOffset = 0f;
+		while(i <= currentProgress && i <= maxLevels) {
+			if(GUI.Button(new Rect(10,25 + yOffset,80,20), "Level " + i)) {
+				Application.LoadLevel("Level " + i);
+			}
+			i++;
+			yOffset += 30;
 		}
 
 	}
