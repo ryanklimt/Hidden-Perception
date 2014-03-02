@@ -10,7 +10,6 @@ public class GUIMenu : MonoBehaviour {
 
 	void Start() {
 		OnLoad();
-		currentProgress = 100;
 	}
 
 	void OnLoad() {
