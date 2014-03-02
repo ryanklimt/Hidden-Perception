@@ -13,6 +13,8 @@ public class PlayerController : Entity {
 	public float acceleration = 30;
 	public float jumpHeight = 12;
 
+	private bool facingRight;
+
 	// System
 	private float animationSpeed;
 	private float currentSpeed;
@@ -37,9 +39,11 @@ public class PlayerController : Entity {
 		manager = Camera.main.GetComponent<GameManager>();
 		animator.SetLayerWeight(1,1);
 		throwing = false;
+		facingRight = true;
 	}
 	
 	void Update () {
+
 		// Reset acceleration upon collision
 		if (playerPhysics.movementStopped) {
 			targetSpeed = 0;
@@ -48,18 +52,23 @@ public class PlayerController : Entity {
 
 		// Throwing Logic
 		if (Input.GetButton("Throw")) {
-			if(!throwing) {
-				throwing = true;
-				Vector3 mousePos = Input.mousePosition;
-				mousePos.z =- (transform.position.z - Camera.main.transform.position.z - 20);
-				Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-				var targetDelta = (worldPos - transform.position);
-				GameObject projectile = Instantiate(throwObj, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation) as GameObject;
-				projectile.rigidbody.AddForce(targetDelta * 100);
+			throwing = true;
+		}
 
-				throwing = false;
-			}
+		if (throwing) {
 			throwing = false;
+			Vector3 mousePos = Input.mousePosition;
+			mousePos.z =- (transform.position.z - Camera.main.transform.position.z - 20);
+			Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+			var targetDelta = (worldPos - transform.position);
+
+			float tmpSpeed = 0;
+
+			if(facingRight) tmpSpeed = 0.5f;
+			if(!facingRight) tmpSpeed = -0.5f;
+
+			GameObject projectile = Instantiate(throwObj, new Vector3(transform.position.x + tmpSpeed, transform.position.y + 2.9f, transform.position.z), transform.rotation) as GameObject;
+			projectile.rigidbody.AddForce(targetDelta * 100);
 		}
 
 		for(int i=0; i < GameObject.FindGameObjectsWithTag("ThrowBall").Length; i++) {
@@ -67,7 +76,6 @@ public class PlayerController : Entity {
 				Destroy(GameObject.FindGameObjectsWithTag("ThrowBall")[i]);
 			}
 		}
-		
 		
 		// If player is touching the ground
 		if (playerPhysics.grounded) {
@@ -89,8 +97,7 @@ public class PlayerController : Entity {
 				animator.SetBool("Jumping",true);
 			}
 		}
-		
-		
+
 		// Set animator parameters
 		animationSpeed = IncrementTowards(animationSpeed,Mathf.Abs(targetSpeed),acceleration);
 		animator.SetFloat("Speed",animationSpeed);
@@ -104,6 +111,8 @@ public class PlayerController : Entity {
 		// Face Direction
 		if (moveDirX !=0) {
 			transform.eulerAngles = (moveDirX>0)?Vector3.up * 180:Vector3.zero;
+			if(moveDirX>0)facingRight = true;
+			if(moveDirX<0)facingRight = false;
 		}
 		
 		// Set amount to move

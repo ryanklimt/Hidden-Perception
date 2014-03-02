@@ -6,7 +6,7 @@ FlashingLight.enabled = true;
 function FixedUpdate() {
 	var RandomNumber = Random.value;
 
-	if(RandomNumber <= .7) {
+	if(RandomNumber <= .85) {
 		FlashingLight.enabled = true;
 	} else {
 		FlashingLight.enabled = false;

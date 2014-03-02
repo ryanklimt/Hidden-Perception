@@ -93,8 +93,6 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void OnGUI() {
-		GUI.Box (new Rect (Screen.width - 100,0,100,40), "Deaths: " + deathCount);
-		GUI.Box (new Rect (Screen.width - 100,40,100,40), "Current Level: " + currentLevel);
-		GUI.Box (new Rect (Screen.width - 100,80,100,40), "Max Level: " + currentProgress);
+		GUI.Label (new Rect (Screen.width - 50,0,100,40), "Level " + currentLevel);
 	}
 }

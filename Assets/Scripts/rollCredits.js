@@ -4,7 +4,8 @@ var crawling = false;
 
 function Start () {
  	var tc = GetComponent(GUIText);
-    var creds = "Thanks for playing!\n";
+    var creds = "You truly are a wizard!\n";
+    creds += "Thanks for playing!\n";
     creds += "Created by Ryan Klimt\n";
     creds += "Game Jam 2014\n";
     tc.text= creds;
