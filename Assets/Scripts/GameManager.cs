@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour {
 		}
 		if (GameObject.FindGameObjectWithTag("Player").transform.position.y < -50) {
 			deathCount++;
-			print(deathCount);
 			Application.LoadLevel("Level " + currentLevel);
 		}
 	}

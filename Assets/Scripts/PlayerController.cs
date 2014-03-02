@@ -3,6 +3,8 @@ using System.Collections;
 
 [RequireComponent(typeof(PlayerPhysics))]
 public class PlayerController : Entity {
+
+	public GameObject throwObj;
 	
 	// Player Handling
 	public float gravity = 20;
@@ -34,6 +36,7 @@ public class PlayerController : Entity {
 		animator = GetComponent<Animator>();
 		manager = Camera.main.GetComponent<GameManager>();
 		animator.SetLayerWeight(1,1);
+		throwing = false;
 	}
 	
 	void Update () {
@@ -44,10 +47,28 @@ public class PlayerController : Entity {
 		}
 
 		// Throwing Logic
-		while (Input.GetButton("Throw")) {
+		if (Input.GetButton("Throw")) {
+			if(!throwing) {
+				throwing = true;
+				Vector3 mousePos = Input.mousePosition;
+				mousePos.z =- (transform.position.z - Camera.mainCamera.transform.position.z - 20);
+				Vector3 worldPos = Camera.mainCamera.ScreenToWorldPoint(mousePos);
+				var targetDelta = (worldPos - transform.position);
+				GameObject projectile = Instantiate(throwObj, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation) as GameObject;
+				projectile.rigidbody.AddForce(targetDelta * 100);
+
+				throwing = false;
+			}
+			throwing = false;
+		}
+
+		for(int i=0; i < GameObject.FindGameObjectsWithTag("ThrowBall").Length; i++) {
+			if(GameObject.FindGameObjectsWithTag("ThrowBall")[i].transform.position.y < -50) {
+				Destroy(GameObject.FindGameObjectsWithTag("ThrowBall")[i]);
+			}
 		}
 		
-
+		
 		// If player is touching the ground
 		if (playerPhysics.grounded) {
 			amountToMove.y = 0;
