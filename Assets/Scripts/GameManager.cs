@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
 	private GameCamera cam;
 	private Vector3 checkpoint;
 
-	public static int levelCount = 10;
+	public static int levelCount = 20;
 	public static int currentLevel = 1;
 	public static int currentProgress;
 

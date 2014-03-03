@@ -6,7 +6,7 @@ using System.Collections;
 public class GUIMenu : MonoBehaviour {
 
 	private int currentProgress;
-	private int maxLevels = 10;
+	private int maxLevels = 20;
 
 	void Start() {
 		OnLoad();
