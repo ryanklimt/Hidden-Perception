@@ -13,10 +13,14 @@ public class GUIMenu : MonoBehaviour {
 	}
 
 	void OnLoad() {
-		var sr = new StreamReader(Application.dataPath + "/" + "LevelSave.txt");
-		var fileContents = sr.ReadToEnd();
-		sr.Close();
-		currentProgress = int.Parse(fileContents.Split("\n"[0])[0]);
+		if(File.Exists(Application.dataPath + "/" + "LevelSave.txt")) {
+			var sr = new StreamReader(Application.dataPath + "/" + "LevelSave.txt");
+			var fileContents = sr.ReadToEnd();
+			sr.Close();
+			currentProgress = int.Parse(fileContents.Split("\n"[0])[0]);
+		} else {
+			currentProgress = 1;
+		}
 	}
 
 

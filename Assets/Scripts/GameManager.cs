@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour {
 
 	void Start () {
 
-		OnLoad();
-
 		var currLevel = int.Parse(Application.loadedLevelName.Split(' ')[Application.loadedLevelName.Split(' ').Length-1]);
 		if (currLevel <= levelCount) currentLevel = currLevel;
 
@@ -79,11 +77,9 @@ public class GameManager : MonoBehaviour {
 		if (currentLevel < levelCount) {
 			currentLevel++;
 			Camera.main.SendMessage("fadeOut");
-			DontDestroyOnLoad(GameObject.Find("GameMusic"));
 			Application.LoadLevel("Level " + currentLevel);
 		} else {
 			Camera.main.SendMessage("fadeOut");
-			DontDestroyOnLoad(GameObject.Find("GameMusic"));
 			Application.LoadLevel("FinishedGame");
 		}
 	}
@@ -92,13 +88,6 @@ public class GameManager : MonoBehaviour {
 		StreamWriter sr = new StreamWriter(Application.dataPath + "/" + "LevelSave.txt");
 		sr.Write(currentLevel);
 		sr.Close();
-	}
-
-	public void OnLoad() {
-		var sr = new StreamReader(Application.dataPath + "/" + "LevelSave.txt");
-		var fileContents = sr.ReadToEnd();
-		sr.Close();
-		currentProgress = int.Parse(fileContents.Split("\n"[0])[0]);
 	}
 	
 	void OnGUI() {
