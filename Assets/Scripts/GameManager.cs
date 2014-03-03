@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour {
 
 	public static int deathCount = 0;
 
+	private Color bgColor;
+	private bool blooping = true;
+
 	void Start () {
 
 		OnLoad();
@@ -61,6 +64,7 @@ public class GameManager : MonoBehaviour {
 				Camera.main.orthographicSize = 25;
 			}
 		}
+	
 	}
 
 	public void SetCheckpoint(Vector3 cp) {
@@ -75,9 +79,11 @@ public class GameManager : MonoBehaviour {
 		if (currentLevel < levelCount) {
 			currentLevel++;
 			Camera.main.SendMessage("fadeOut");
+			DontDestroyOnLoad(GameObject.Find("GameMusic"));
 			Application.LoadLevel("Level " + currentLevel);
 		} else {
 			Camera.main.SendMessage("fadeOut");
+			DontDestroyOnLoad(GameObject.Find("GameMusic"));
 			Application.LoadLevel("FinishedGame");
 		}
 	}
@@ -96,6 +102,6 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void OnGUI() {
-		GUI.Label (new Rect (Screen.width - 50,0,100,40), "Level " + currentLevel);
+		GUI.Label(new Rect (Screen.width - 50,0,100,40), "Level " + currentLevel);
 	}
 }

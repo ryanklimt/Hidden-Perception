@@ -49,7 +49,6 @@
      <Compile Include="Assets\Scripts\FadeInOut.js" />
      <Compile Include="Assets\Scripts\FlickeringLight.js" />
      <Compile Include="Assets\Scripts\gameMusic.js" />
-     <Compile Include="Assets\Scripts\menuMusic.js" />
      <Compile Include="Assets\Scripts\rollCredits.js" />
      <None Include="Assets\LevelSave.txt" />
   </ItemGroup>
