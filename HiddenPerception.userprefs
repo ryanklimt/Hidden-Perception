@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUIMenu.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\rollCredits.js">
     <Files>
-      <File FileName="Assets\Scripts\FlickeringLight.js" Line="18" Column="39" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="88" Column="84" />
-      <File FileName="Assets\Scripts\GUIMenu.cs" Line="22" Column="24" />
+      <File FileName="Assets\Scripts\rollCredits.js" Line="13" Column="51" />
+      <File FileName="Assets\Scripts\FlickeringLight.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GUIMenu.cs" Line="32" Column="4" />
       <File FileName="Assets\Scripts\FadeInOut.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
     </Files>
