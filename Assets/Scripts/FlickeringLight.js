@@ -13,9 +13,9 @@ function bgColorShifter(){
         bgColor.a = 1.0;
         var t: float = 0f;
         var currentColor = Camera.main.backgroundColor;
-        while( t < 1.0 ){
+        while( t < 5.0 ){
             Camera.main.backgroundColor = Color.Lerp(currentColor, bgColor, t );
-            yield WaitForSeconds(.075);
+            yield WaitForSeconds(.03);
             t += Time.deltaTime;
         }
     }

@@ -25,17 +25,31 @@ public class GUIMenu : MonoBehaviour {
 
 
 	void OnGUI() {
-		GUI.Box(new Rect(5,5,90,Math.Min(currentProgress, maxLevels) * 30 + 20), "Main Menu");
+		if(Math.Min(currentProgress, maxLevels) <= 10) {
+			GUI.Box(new Rect(5,5,90,Math.Min(currentProgress, maxLevels) * 30 + 20), "Main Menu");
+		} else {
+			GUI.Box(new Rect(5,5,180,320), "Main Menu");
+		}
 
 		int i = 1;
 		float yOffset = 0f;
 		while(i <= currentProgress && i <= maxLevels) {
-			if(GUI.Button(new Rect(10,25 + yOffset,80,20), "Level " + i)) {
-				Camera.main.SendMessage("fadeOut");
-				Application.LoadLevel("Level " + i);
+			if(i<=10) {
+				if(GUI.Button(new Rect(10,25 + yOffset,80,20), "Level " + i)) {
+					Camera.main.SendMessage("fadeOut");
+					Application.LoadLevel("Level " + i);
+				}
+			} else {
+				if(GUI.Button(new Rect(100,25 + yOffset,80,20), "Level " + i)) {
+					Camera.main.SendMessage("fadeOut");
+					Application.LoadLevel("Level " + i);
+				}
 			}
 			i++;
 			yOffset += 30;
+			if(yOffset>=300) {
+				yOffset = 0f;
+			}
 		}
 
 	}

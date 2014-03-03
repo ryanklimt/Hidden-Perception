@@ -91,6 +91,6 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void OnGUI() {
-		GUI.Label(new Rect (Screen.width - 50,0,100,40), "Level " + currentLevel);
+		GUI.Label(new Rect (Screen.width - 55,0,100,40), "Level " + currentLevel);
 	}
 }
