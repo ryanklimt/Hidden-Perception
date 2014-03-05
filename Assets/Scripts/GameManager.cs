@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
 
 	public static int levelCount = 20;
 	public static int currentLevel = 1;
-	public static int currentProgress;
+	//public static int currentProgress;
 
 	public static int deathCount = 0;
 
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 
 		var currLevel = int.Parse(Application.loadedLevelName.Split(' ')[Application.loadedLevelName.Split(' ').Length-1]);
-		if (currLevel <= levelCount) currentLevel = currLevel;
+		if (currLevel >= levelCount) currentLevel = currLevel;
 
 		cam = GetComponent<GameCamera>();
 		if (GameObject.FindGameObjectWithTag("Spawn")) {
@@ -70,10 +70,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void EndLevel() {
-		if (currentLevel >= currentProgress) {
+		/*if (currentLevel >= currentProgress) {
 			currentProgress = currentLevel + 1;
 			OnSave(currentProgress);
-		}
+		}*/
 		if (currentLevel < levelCount) {
 			currentLevel++;
 			Camera.main.SendMessage("fadeOut");
@@ -84,11 +84,11 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void OnSave(int currentLevel) {
+	/*public void OnSave(int currentLevel) {
 		StreamWriter sr = new StreamWriter(Application.dataPath + "/" + "LevelSave.txt");
 		sr.Write(currentLevel);
 		sr.Close();
-	}
+	}*/
 	
 	void OnGUI() {
 		GUI.Label(new Rect (Screen.width - 55,0,100,40), "Level " + currentLevel);

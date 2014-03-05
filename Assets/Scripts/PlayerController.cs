@@ -15,6 +15,9 @@ public class PlayerController : Entity {
 
 	private bool facingRight;
 
+	private int maxBallCount = 200;
+	private int currentBallCount;
+
 	// System
 	private float animationSpeed;
 	private float currentSpeed;
@@ -55,7 +58,8 @@ public class PlayerController : Entity {
 			throwing = true;
 		}
 
-		if (throwing) {
+		if (throwing && currentBallCount < maxBallCount) {
+			currentBallCount++;
 			throwing = false;
 			Vector3 mousePos = Input.mousePosition;
 			mousePos.z =- (transform.position.z - Camera.main.transform.position.z - 20);
@@ -73,6 +77,7 @@ public class PlayerController : Entity {
 
 		for(int i=0; i < GameObject.FindGameObjectsWithTag("ThrowBall").Length; i++) {
 			if(GameObject.FindGameObjectsWithTag("ThrowBall")[i].transform.position.y < -50) {
+				currentBallCount --;
 				Destroy(GameObject.FindGameObjectsWithTag("ThrowBall")[i]);
 			}
 		}

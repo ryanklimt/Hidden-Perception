@@ -20,3 +20,9 @@ function bgColorShifter(){
         }
     }
 }
+
+function Update() {
+	if (Input.GetKeyDown ("m")) {
+		GameObject.Find("GameMusic").audio.mute = !GameObject.Find("GameMusic").audio.mute;
+	}
+}

@@ -5,22 +5,22 @@ using System.Collections;
 
 public class GUIMenu : MonoBehaviour {
 
-	private int currentProgress;
+	private int currentProgress = 20;
 	private int maxLevels = 20;
 
 	void Start() {
-		OnLoad();
+		/*OnLoad();*/
 	}
 
 	void OnLoad() {
-		if(File.Exists(Application.dataPath + "/" + "LevelSave.txt")) {
+		/*if(File.Exists(Application.dataPath + "/" + "LevelSave.txt")) {
 			var sr = new StreamReader(Application.dataPath + "/" + "LevelSave.txt");
 			var fileContents = sr.ReadToEnd();
 			sr.Close();
 			currentProgress = int.Parse(fileContents.Split("\n"[0])[0]);
 		} else {
 			currentProgress = 1;
-		}
+		}*/
 	}
 
 
